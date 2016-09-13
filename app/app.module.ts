@@ -7,6 +7,7 @@ import {AppComponent}  from './app.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroesComponent} from './heroes.component';
 import {HeroService} from './hero.service';
+import {DashBoardComponent} from './dashboard.component';
 import {routing} from './app.routing';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {routing} from './app.routing';
   declarations: [
     AppComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashBoardComponent
   ],
   providers: [
     HeroService
