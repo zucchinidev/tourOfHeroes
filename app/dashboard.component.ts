@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Hero} from './hero.model';
 import {HeroService} from './hero.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'my-dashboard',
@@ -9,7 +10,8 @@ import {HeroService} from './hero.service';
 export class DashBoardComponent implements OnInit {
   heroes: Hero[];
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService,
+  private router: Router) {
 
   }
 
@@ -19,7 +21,8 @@ export class DashBoardComponent implements OnInit {
       .then((heroes: Hero[]) => this.heroes = heroes.slice(0, 4));
   }
 
-  goToDetail(): void {
-    // TODO
+  goToDetail(hero: Hero): void {
+    let link = ['/detail', hero.id];
+    this.router.navigate(link);
   }
 }
