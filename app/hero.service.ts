@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Hero} from './hero.model';
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs';
 
@@ -12,6 +12,7 @@ export class HeroService {
   }
 
   getHeroes(): Promise<Hero[]> {
+    // TODO adjust data property to match my web api
     return this.get(this.heroesUrl)
       .toPromise()
       .then((response) => response.json().data as Hero[])
@@ -23,7 +24,7 @@ export class HeroService {
       .then((heroes) => heroes.find((hero: Hero) =>  hero.id === id ));
   }
 
-  private get(url: string): Observable {
+  private get(url: string): Observable<Response> {
     return this.http.get(url);
   }
 
