@@ -33,7 +33,7 @@ export class HeroService {
 
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
-      .then((heroes) => heroes.find((hero: Hero) =>  hero.id === id ));
+      .then((heroes) => heroes.find((hero: Hero) => hero.id === id));
   }
 
   update(hero: Hero): Promise<Hero> {
@@ -44,12 +44,25 @@ export class HeroService {
       .catch(HeroService.handleError);
   }
 
+  create(name: string): Promise<Hero> {
+    const hero = new Hero(name);
+    return this.post(hero)
+      .toPromise()
+      .then((response) => response.json().data as Hero)
+      .catch(HeroService.handleError);
+  }
+
   private get(url: string): Observable<Response> {
     return this.http.get(url);
   }
 
   private put(url: string, hero: Hero): Observable<Response> {
     return this.http.put(url, JSON.stringify(hero), HeroService.getJSONHeaders());
+  }
+
+  private post(hero: Hero): Observable<Response> {
+    return this.http
+      .post(this.heroesUrl, JSON.stringify(hero), HeroService.getJSONHeaders());
   }
 
   private getPutUri(hero: Hero) {

@@ -22,8 +22,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService
-      .getHeroes()
+    this.heroService.getHeroes()
       .then((heroes: Hero[]) => this.heroes = heroes);
   }
 
@@ -33,5 +32,15 @@ export class HeroesComponent implements OnInit {
 
   goToDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (name.length > 0) {
+      this.heroService.create(name).then((hero) => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+    }
   }
 }
