@@ -37,7 +37,7 @@ export class HeroService {
   }
 
   update(hero: Hero): Promise<Hero> {
-    const url = this.getPutUri(hero);
+    const url = this.getUrlForSingleResource(hero);
     return this.put(url, hero)
       .toPromise()
       .then(() => hero)
@@ -49,6 +49,13 @@ export class HeroService {
     return this.post(hero)
       .toPromise()
       .then((response) => response.json().data as Hero)
+      .catch(HeroService.handleError);
+  }
+
+  remove(hero: Hero): Promise<void> {
+    return this.delete(hero)
+      .toPromise()
+      .then(() => undefined)
       .catch(HeroService.handleError);
   }
 
@@ -65,7 +72,13 @@ export class HeroService {
       .post(this.heroesUrl, JSON.stringify(hero), HeroService.getJSONHeaders());
   }
 
-  private getPutUri(hero: Hero) {
+
+  private delete(hero: Hero): Observable<Response> {
+    return this.http
+      .delete(this.getUrlForSingleResource(hero), HeroService.getJSONHeaders());
+  }
+
+  private getUrlForSingleResource(hero: Hero) {
     return `${this.heroesUrl}/${hero.id}`;
   }
 }

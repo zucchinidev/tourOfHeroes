@@ -43,4 +43,15 @@ export class HeroesComponent implements OnInit {
       });
     }
   }
+
+  remove($event: MouseEvent, index: number, hero: Hero): void {
+    $event.stopPropagation();
+    this.heroService.remove(hero)
+      .then(() => {
+        this.heroes.splice(index, 1);
+        if (this.selectedHero === hero) {
+          this.selectedHero = null;
+        }
+      });
+  }
 }

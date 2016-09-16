@@ -9,10 +9,13 @@
   </button>
 </div>
 <ul class="heroes">
-  <li *ngFor="let hero of heroes"
+  <li *ngFor="let hero of heroes; let i = index;"
       [class.selected]="hero === selectedHero"
       (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <button class="delete" (click)="remove($event, i, hero)">
+      X
+    </button>
   </li>
 </ul>
 
