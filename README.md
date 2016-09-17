@@ -1,16 +1,12 @@
-# Angular 2 QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# Angular 2 Tour of Heroes
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+## Synopsis
 
-It's been extended with testing support so you can start writing tests immediately.
-
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular 2**
-
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+The Tour of Heroes covers the core fundamentals of Angular. We’ll use built-in directives to show/hide elements and display lists of hero data. 
+We’ll create a component to display hero details and another to show an array of heroes. We'll use one-way data binding for read-only data. 
+We'll add editable fields to update a model with two-way data binding. We'll bind component methods to user events like key strokes and clicks. 
+We’ll learn to select a hero from a master list and edit that hero in the details view. We'll format data with pipes. We'll create a shared 
+service to assemble our heroes. And we'll use routing to navigate among different views and their components.
 
 ## Prerequisites
 
@@ -23,41 +19,24 @@ Get it now</a> if it's not already installed on your machine.
 by running `node -v` and `npm -v` in a terminal/console window.
 Older versions produce errors.
 
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
+We recommend [nvm](https://github.com/creationix/nvm) for managing 
+multiple versions of node and npm.
 
-## Create a new project based on the QuickStart
+## Motivation
 
-Clone this repo into new project folder (e.g., `my-proj`).
-```bash
-git clone  https://github.com/angular/quickstart  my-proj
-cd my-proj
+ To learn about development with **NodeJS** & **Angular 2** using **TypeScript**
+ 
+## Installation
+
+* Install TypeScript Compiler CLI utility.
+```
+npm install -g typescript
+```
+* Install Typings CLI utility.
+```
+npm install -g typings
 ```
 
-We have no intention of updating the source on `angular/quickstart`.
-Discard everything "git-like" by deleting the `.git` folder.
-```bash
-rm -rf .git  # non-Windows
-rd .git /S/Q # windows
-```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```bash
-git remote add origin <repo-address>
-git push -u origin master
-```
 ## Install npm packages
 
 > See npm and nvm version notes above
@@ -105,15 +84,10 @@ Here are the test related scripts:
 The QuickStart documentation doesn't discuss testing.
 This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
 
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
 ### Unit Tests
 TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
 
-Look for the example `app/app.component.spec.ts`.
+Look for the example `app/root/app.component.spec.ts`.
 Add more `.spec.ts` files as you wish; we configured karma to find them.
 
 Run it with `npm test`
@@ -149,6 +123,3 @@ A custom reporter (see `protractor.config.js`) generates a  `./_test-output/prot
 which is easier to read; this file is excluded from source control.
 
 Shut it down manually with Ctrl-C.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
