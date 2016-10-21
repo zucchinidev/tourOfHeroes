@@ -5,6 +5,7 @@
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "start-webpack": "webpack-dev-server --inline --progress --port 8080",
+    "start-webpack2": "webpack-dev-server --content-base build/ --port 8080",
     "docker-build": "docker build -t ng2-quickstart .",
     "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart",
     "pree2e": "npm run webdriver:update",
@@ -75,5 +76,8 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.14.0"
   },
-  "repository": {}
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zucchinidev/tourOfHeroes.git"
+  }
 }
